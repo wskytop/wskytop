@@ -299,6 +299,23 @@
 
 
     
+        <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <div id="comments">
+        <script>
+            var gitment = new Gitment({
+                owner: 'wskytop',
+                repo: '',
+                oauth: {
+                    client_id: 'a42f207075cec1f184ff',
+                    client_secret: 'a8001438ed5ab79a01d476d08fb75507ac480ea5',
+                },
+            })
+            gitment.render('comments')
+        </script>
+    </div>
+
+    
 </section>
         
       </div>
