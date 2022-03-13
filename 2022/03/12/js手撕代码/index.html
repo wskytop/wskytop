@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js手撕代码 | Hugh&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Hugh,Hugh's Blog" />
+  
+  <meta name="description" content="数组的扁平化  全部展开12345function flatten(arr) &amp;#123;    return arr.reduce((result, item) &#x3D;&gt; &amp;#123;        return result.concat(Array.isArray(item) ? flatten(item) : item)    &amp;#125;, [])&amp;#125; 展开n层12345fun">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js手撕代码">
+<meta property="og:url" content="https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="Hugh&#39;s Blog">
+<meta property="og:description" content="数组的扁平化  全部展开12345function flatten(arr) &amp;#123;    return arr.reduce((result, item) &#x3D;&gt; &amp;#123;        return result.concat(Array.isArray(item) ? flatten(item) : item)    &amp;#125;, [])&amp;#125; 展开n层12345fun">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-12T09:15:25.663Z">
+<meta property="article:modified_time" content="2022-03-12T09:57:45.217Z">
+<meta property="article:author" content="Hugh">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Hugh&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Hugh&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个不专注 WEB 开发的日常博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Hugh" target="_blank" href="//wskytop.gitee.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wskytop">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-js手撕代码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      js手撕代码
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/手撕代码/">手撕代码</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2022-03-12
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h4 id="数组的扁平化"><a href="#数组的扁平化" class="headerlink" title="数组的扁平化"></a>数组的扁平化</h4><hr>
+<ol>
+<li><h5 id="全部展开"><a href="#全部展开" class="headerlink" title="全部展开"></a>全部展开</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">result, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> result.concat(<span class="built_in">Array</span>.isArray(item) ? flatten(item) : item)</span><br><span class="line">    &#125;, [])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h5 id="展开n层"><a href="#展开n层" class="headerlink" title="展开n层"></a>展开n层</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFlat</span>(<span class="params">arr, num = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num &gt; <span class="number">0</span> ? arr.reduce(<span class="function">(<span class="params">res, item</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res.concat(<span class="built_in">Array</span>.isArray(item) ? myFlat(item, num - <span class="number">1</span>) : item)</span><br><span class="line">    &#125;, []) : arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="new的实现"><a href="#new的实现" class="headerlink" title="new的实现"></a>new的实现</h4><hr>
+<p>首先我们得知道new的原理：</p>
+<ul>
+<li>创建一个空对象</li>
+<li>继承构造函数的原型</li>
+<li>this指向该对象，并调用构造函数</li>
+<li>返回对象</li>
+</ul>
+<p>下面是代码实现:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myNew</span>(<span class="params">fn,...args</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">	obj.__proto__ = fn.prototype</span><br><span class="line">	fn.apply(obj,args)</span><br><span class="line">	<span class="keyword">return</span> obj</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="instanceOf的实现："><a href="#instanceOf的实现：" class="headerlink" title="instanceOf的实现："></a>instanceOf的实现：</h4><hr>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceOf</span>(<span class="params">father, child</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span>(child) !== <span class="string">&#x27;object&#x27;</span>  || !child) </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> fp = father.prototype</span><br><span class="line">    <span class="keyword">let</span> cp = child.__proto__</span><br><span class="line">    <span class="keyword">while</span> (cp) &#123;</span><br><span class="line">        <span class="keyword">if</span> (cp === fp) </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        cp = cp.__proto__</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="函数柯里化："><a href="#函数柯里化：" class="headerlink" title="函数柯里化："></a>函数柯里化：</h4><hr>
+<h5 id="什么是柯里化（curry）"><a href="#什么是柯里化（curry）" class="headerlink" title="什么是柯里化（curry）:"></a>什么是柯里化（curry）:</h5><hr>
+<p>柯里化是一种将使用多个参数的一个函数转换成一系列使用一个参数的函数的技术。</p>
+<p>这段解释看着还是挺懵逼的，不如举个栗子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 普通的add函数</span><br><span class="line">function add(x, y) &#123;</span><br><span class="line">    return x + y</span><br><span class="line">&#125;</span><br><span class="line">// Currying后</span><br><span class="line">function curryingAdd(x) &#123;</span><br><span class="line">    return function (y) &#123;</span><br><span class="line">        return x + y</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">add(1, 2)           // 3</span><br><span class="line">curryingAdd(1)(2)   // 3</span><br></pre></td></tr></table></figure>
+
+<h5 id="柯里化的原理："><a href="#柯里化的原理：" class="headerlink" title="柯里化的原理："></a>柯里化的原理：</h5><hr>
+<ol>
+<li>参数复用</li>
+<li>提前确认</li>
+<li>延迟运行</li>
+</ol>
+<h4 id="数组去重："><a href="#数组去重：" class="headerlink" title="数组去重："></a>数组去重：</h4><hr>
+<h5 id="普通数组去重："><a href="#普通数组去重：" class="headerlink" title="普通数组去重："></a>普通数组去重：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 1, 2, 4, 5, 6, 3, 4, 3]</span><br><span class="line">console.log([...new Set(arr)]);</span><br></pre></td></tr></table></figure>
+
+<h5 id="对象数组去重："><a href="#对象数组去重：" class="headerlink" title="对象数组去重："></a>对象数组去重：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function quchong(arr,name )&#123;</span><br><span class="line">    const res = new Map()</span><br><span class="line">    return arr.filter(item =&gt; !res.has(item[name]) &amp;&amp; res.set(item[name],1))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="浅拷贝与深拷贝："><a href="#浅拷贝与深拷贝：" class="headerlink" title="浅拷贝与深拷贝："></a>浅拷贝与深拷贝：</h4><hr>
+<p>浅拷贝：浅拷贝是创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址 ，所以<strong>如果其中一个对象改变了这个地址，就会影响到另一个对象</strong></p>
+<p>深拷贝：将一个对象从内存中完整的拷贝一份出来,从堆内存中开辟一个新的区域存放新对象,且<strong>修改新对象不会影响原对象</strong></p>
+<h5 id="浅拷贝的实现："><a href="#浅拷贝的实现：" class="headerlink" title="浅拷贝的实现："></a>浅拷贝的实现：</h5><hr>
+<p>1.Object.assign()</p>
+<p>Object.assign() 方法可以把任意多个的源对象自身的<strong>可枚举属性</strong>拷贝给目标对象，然后返回目标对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123; person: &#123;name: &quot;kobe&quot;, age: 41&#125;,sports:&#x27;basketball&#x27; &#125;;</span><br><span class="line">let obj2 = Object.assign(&#123;&#125;, obj1);</span><br><span class="line">obj2.person.name = &quot;wade&quot;;</span><br><span class="line">obj2.sports = &#x27;football&#x27;</span><br><span class="line">console.log(obj1); // &#123; person: &#123; name: &#x27;wade&#x27;, age: 41 &#125;, sports: &#x27;basketball&#x27; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.展开运算符…</p>
+<p>展开运算符是一个 es6 / es2015特性，它提供了一种非常方便的方式来执行浅拷贝，这与 Object.assign ()的功能相同</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123; name: &#x27;Kobe&#x27;, address:&#123;x:100,y:100&#125;&#125;</span><br><span class="line">let obj2= &#123;... obj1&#125;</span><br><span class="line">obj1.address.x = 200;</span><br><span class="line">obj1.name = &#x27;wade&#x27;</span><br><span class="line">console.log(&#x27;obj2&#x27;,obj2) // obj2 &#123; name: &#x27;Kobe&#x27;, address: &#123; x: 200, y: 100 &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.手写浅拷贝：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function clone(target) &#123;</span><br><span class="line">    let cloneTarget = &#123;&#125;;</span><br><span class="line">    for (const key in target) &#123;</span><br><span class="line">        // 忽略掉那些从原型链上继承到的属性</span><br><span class="line">    	if (target.hasOwnProperty(key))&#123;</span><br><span class="line">        	cloneTarget[key] = target[key];</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return cloneTarget;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="深拷贝的实现："><a href="#深拷贝的实现：" class="headerlink" title="深拷贝的实现："></a>深拷贝的实现：</h5><hr>
+<p>1.JSON.parse(JSON.stringify())</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, &#123;</span><br><span class="line">    username: &#x27; kobe&#x27;</span><br><span class="line">&#125;];</span><br><span class="line">let arr4 = JSON.parse(JSON.stringify(arr));</span><br></pre></td></tr></table></figure>
+
+<p>这也是利用JSON.stringify将对象转成JSON字符串，再用JSON.parse把字符串解析成对象，一去一来，新的对象产生了，而且对象会开辟新的栈，实现深拷贝。</p>
+<p>这种方法虽然可以实现数组或对象深拷贝,但<strong>不能处理函数和正则</strong>，因为这两者基于JSON.stringify和JSON.parse处理后，得到的正则就不再是正则（变为空对象），得到的函数就不再是函数（变为null）了</p>
+<p>2.手写深拷贝</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(obj) &#123;</span><br><span class="line">      if (!obj || typeof obj !== &quot;object&quot;) return;</span><br><span class="line">      let newObj = Array.isArray(obj) ? [] : &#123;&#125;;</span><br><span class="line">      for (let key in obj) &#123;</span><br><span class="line">        if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">          newObj[key] = typeof obj[key] === &quot;object&quot; ? deepClone(obj[key]) : obj[key];</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2022年03月12日 17:57</p>
+        <p>原始链接： <a class="post-url" href="/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" title="js手撕代码">https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/</a></p>
+        <footer>
+            <a href="https://wskytop.gitee.io">
+                <img src="/images/logo.png" alt="Hugh">
+                Hugh
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/&title=《js手撕代码》 — Hugh's Blog&pic=https://wskytop.gitee.ioimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/&title=《js手撕代码》 — Hugh's Blog&source=专注 WEB 开发的网站" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js手撕代码》 — Hugh's Blog&url=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/&via=https://wskytop.gitee.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wskytop.gitee.io/2022/03/12/js%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/js/" class="color3">js</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%81%E5%B9%B3%E5%8C%96"><span class="post-toc-text">数组的扁平化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%85%A8%E9%83%A8%E5%B1%95%E5%BC%80"><span class="post-toc-text">全部展开</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B1%95%E5%BC%80n%E5%B1%82"><span class="post-toc-text">展开n层</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#new%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">new的实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#instanceOf%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="post-toc-text">instanceOf的实现：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96%EF%BC%9A"><span class="post-toc-text">函数柯里化：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9F%AF%E9%87%8C%E5%8C%96%EF%BC%88curry%EF%BC%89"><span class="post-toc-text">什么是柯里化（curry）:</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%9F%AF%E9%87%8C%E5%8C%96%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="post-toc-text">柯里化的原理：</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%EF%BC%9A"><span class="post-toc-text">数组去重：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%99%AE%E9%80%9A%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%EF%BC%9A"><span class="post-toc-text">普通数组去重：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%EF%BC%9A"><span class="post-toc-text">对象数组去重：</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%9A"><span class="post-toc-text">浅拷贝与深拷贝：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="post-toc-text">浅拷贝的实现：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="post-toc-text">深拷贝的实现：</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/11/27/promise/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Promise的理解和手撕代码</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="js手撕代码" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyvMglhx4';
+        var conf = 'dc4a7139a3f67732c71e03c4b993aeeb';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2022 Hugh<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wskytop.gitee.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/notes/">notes</a><a class="category-link" href="/categories/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">手撕代码</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 20px;">js</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 20px;">js</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
