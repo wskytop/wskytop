@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Vue 面试题 | Hugh&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Hugh,Hugh's Blog" />
+  
+  <meta name="description" content="简述MVVM什么是MVVM？ 视图模型双向绑定，是Model-View-ViewModel的缩写，也就是把MVC中的Controller演变成ViewModel。Model层代表数据模型，View代表UI组件，ViewModel是View和Model层的桥梁，数据会绑定到viewModel层并自动将数据渲染到页面中，视图变化的时候会通知viewModel层更新数据。以前是操作DOM结构更新视图，现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue 面试题">
+<meta property="og:url" content="https://wskytop.gitee.io/2022/03/05/vue/index.html">
+<meta property="og:site_name" content="Hugh&#39;s Blog">
+<meta property="og:description" content="简述MVVM什么是MVVM？ 视图模型双向绑定，是Model-View-ViewModel的缩写，也就是把MVC中的Controller演变成ViewModel。Model层代表数据模型，View代表UI组件，ViewModel是View和Model层的桥梁，数据会绑定到viewModel层并自动将数据渲染到页面中，视图变化的时候会通知viewModel层更新数据。以前是操作DOM结构更新视图，现">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7249773a1634f779c48f3f0ffabf968~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="article:published_time" content="2022-03-05T09:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-16T09:03:28.647Z">
+<meta property="article:author" content="Hugh">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7249773a1634f779c48f3f0ffabf968~tplv-k3u1fbpfcp-zoom-1.image">
+  
+  
+    <link rel="icon" href="images/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+  
+
+  
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">Hugh&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        Hugh&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注于 WEB 开发的日常博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Hugh" target="_blank" href="//wskytop.gitee.io">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wskytop">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Vue 面试题
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/面经/">面经</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2022-03-05
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="简述MVVM"><a href="#简述MVVM" class="headerlink" title="简述MVVM"></a>简述MVVM</h3><p><strong>什么是MVVM？</strong></p>
+<p><code>视图模型双向绑定</code>，是<code>Model-View-ViewModel</code>的缩写，也就是把<code>MVC</code>中的<code>Controller</code>演变成<code>ViewModel。Model</code>层代表数据模型，<code>View</code>代表UI组件，<code>ViewModel</code>是<code>View</code>和<code>Model</code>层的桥梁，数据会绑定到<code>viewModel</code>层并自动将数据渲染到页面中，视图变化的时候会通知<code>viewModel</code>层更新数据。以前是操作DOM结构更新视图，现在是<code>数据驱动视图</code>。</p>
+<p><strong>MVVM的优点：</strong></p>
+<p>1.<code>低耦合</code>。视图（View）可以独立于Model变化和修改，一个Model可以绑定到不同的View上，当View变化的时候Model可以不变化，当Model变化的时候View也可以不变<br>2.<code>可重用性</code>。你可以把一些视图逻辑放在一个Model里面，让很多View重用这段视图逻辑<br>3.<code>独立开发</code>。开发人员可以专注于业务逻辑和数据的开发(ViewModel)，设计人员可以专注于页面设计<br>4.<code>可测试</code></p>
+<h4 id="SPA单页面："><a href="#SPA单页面：" class="headerlink" title="SPA单页面："></a>SPA单页面：</h4><p>概念：仅在 Web 页面初始化时加载相应的 HTML、JavaScript 和 CSS。一旦页面加载完成，SPA 不会因为用户的操作而进行页面的重新加载或跳转；取而代之的是利用路由机制实现 HTML 内容的变换，UI 与用户的交互，避免页面的重新加载。</p>
+<p>优点：</p>
+<p>1.体验好，不刷新，减少 请求  数据ajax异步获取 页面流程；</p>
+<p>2.前后端分离</p>
+<p>3.减轻服务端压力</p>
+<p>4.共用一套后端程序代码，设配多端</p>
+<p>缺点：</p>
+<p>1.首屏加载过慢；</p>
+<p>2.SEO 不利于搜索引擎抓取</p>
+<h3 id="Vue响应式是怎么实现的？"><a href="#Vue响应式是怎么实现的？" class="headerlink" title="Vue响应式是怎么实现的？"></a>Vue响应式是怎么实现的？</h3><ol>
+<li>劫持：通过Object.defineProperty对对象进行递归劫持属性的get、set</li>
+<li>观察者模式：使用watcher进行观察数据使用的地方</li>
+<li>发布订阅模式：使用dep收集watcher，数据更改时，通过notify方法通知dep里的watcher去进行相应的更新</li>
+<li>数据：数据没有使用劫持的模式，而是通过重写数据原型上的方法来实现数组的响应式</li>
+</ol>
+<h3 id="谈谈对vue生命周期的理解？"><a href="#谈谈对vue生命周期的理解？" class="headerlink" title="谈谈对vue生命周期的理解？"></a>谈谈对vue生命周期的理解？</h3><p>每个<code>Vue</code>实例在创建时都会经过一系列的初始化过程，<code>vue</code>的生命周期钩子，就是说在达到某一阶段或条件时去触发的函数，目的就是为了完成一些动作或者事件</p>
+<ul>
+<li><code>beforeCreate</code>: 实例Vue，未初始化和响应式数据<br>  <code>created</code>： 已初始化和响应式数据，可访问数据；在这里可以发送请求</li>
+<li><code>beforeMount</code>：render调用，虚拟DOM生成，未转真实DOM,可以发起服务端请求，去数据，ssr中不可用，基本用不上这个hook<br>  <code>mounted</code>: 真实DOM挂载完毕,SSR中不可用</li>
+<li><code>beforeUpdate</code> :更新前，在数据变化后，模版改变前触发，切勿使用它监听数据变化<br>  <code>updated</code>：更新后，在数据改变后，模版改变后触发，常用于重渲染案后的打点，性能检测或触发vue组件中非vue组件的更新</li>
+<li><code>beforeDestroy</code>：实例被销毁前，组件卸载前触发，此时可以手动销毁一些方法，可以在此时清理事件、计时器或者取消订阅操作<br>  <code>destroyed</code>:卸载完毕后触发，销毁后，可以做最后的打点或事件触发操作</li>
+</ul>
+<h3 id="组件生命周期"><a href="#组件生命周期" class="headerlink" title="组件生命周期"></a>组件生命周期</h3><p>生命周期（父子组件） 父组件beforeCreate –&gt; 父组件created –&gt; 父组件beforeMount –&gt; 子组件beforeCreate –&gt; 子组件created –&gt; 子组件beforeMount –&gt; 子组件 mounted –&gt; 父组件mounted –&gt;父组件beforeUpdate –&gt;子组件beforeDestroy–&gt; 子组件destroyed –&gt; 父组件updated</p>
+<p><strong>加载渲染过程</strong> 父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mounted</p>
+<p><strong>挂载阶段</strong> 父created-&gt;子created-&gt;子mounted-&gt;父mounted</p>
+<p><strong>父组件更新阶段</strong> 父beforeUpdate-&gt;父updated</p>
+<p><strong>子组件更新阶段</strong> 父beforeUpdate-&gt;子beforeUpdate-&gt;子updated-&gt;父updated</p>
+<p><strong>销毁阶段</strong> 父beforeDestroy-&gt;子beforeDestroy-&gt;子destroyed-&gt;父destroyed</p>
+<h3 id="computed与watch"><a href="#computed与watch" class="headerlink" title="computed与watch"></a><code>computed与watch</code></h3><p>通俗来讲，既能用 computed 实现又可以用 watch 监听来实现的功能，推荐用 computed， 重点在于 computed 的缓存功能 computed 计算属性是用来声明式的描述一个值依赖了其它的值，当所依赖的值或者变量 改变时，计算属性也会跟着改变； watch 监听的是已经在 data 中定义的变量，当该变量变化时，会触发 watch 中的方法。</p>
+<p><strong>watch 属性监听</strong> 是一个对象，键是需要观察的属性，值是对应回调函数，主要用来监听某些特定数据的变化，从而进行某些具体的业务逻辑操作,监听属性的变化，需要在数据变化时执行异步或开销较大的操作时使用</p>
+<p><strong>computed 计算属性</strong> 属性的结果会被<code>缓存</code>，当<code>computed</code>中的函数所依赖的属性没有发生改变的时候，那么调用当前函数的时候结果会从缓存中读取。除非依赖的响应式属性变化时才会重新计算，主要当做属性来使用 <code>computed</code>中的函数必须用<code>return</code>返回最终的结果 <code>computed</code>更高效，优先使用。<code>data 不改变，computed 不更新。</code></p>
+<p><strong>使用场景</strong> </p>
+<p><code>computed</code>：当一个属性受多个属性影响的时候使用，例：购物车商品结算功能 </p>
+<p><code>watch</code>：当一条数据影响多条数据的时候使用，例：搜索数据</p>
+<h3 id="组件中的data为什么是一个函数？"><a href="#组件中的data为什么是一个函数？" class="headerlink" title="组件中的data为什么是一个函数？"></a>组件中的data为什么是一个函数？</h3><p>1.一个组件被复用多次的话，也就会创建多个实例。本质上，这些实例用的都是同一个构造函数。</p>
+<p> 2.如果data是对象的话，对象属于引用类型，会影响到所有的实例。所以为了保证组件不同的实例之间data不冲突，data必须是一个函数。</p>
+<h3 id="为什么v-for和v-if不建议用在一起"><a href="#为什么v-for和v-if不建议用在一起" class="headerlink" title="为什么v-for和v-if不建议用在一起"></a>为什么v-for和v-if不建议用在一起</h3><p>1.当 v-for 和 v-if 处于同一个节点时，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。如果要遍历的数组很大，而真正要展示的数据很少时，这将造成很大的性能浪费<br>2.这种场景建议使用 computed，先对数据进行过滤</p>
+<p>注意：3.x 版本中 <code>v-if</code> 总是优先于 <code>v-for</code> 生效。由于语法上存在歧义，建议避免在同一元素上同时使用两者。比起在模板层面管理相关逻辑，更好的办法是通过创建计算属性筛选出列表，并以此创建可见元素。</p>
+<p>解惑传送门 ☞ <a target="_blank" rel="noopener" href="https://v3.cn.vuejs.org/guide/migration/v-if-v-for.html#%E6%A6%82%E8%A7%88"># v-if 与 v-for 的优先级对比非兼容</a></p>
+<h3 id="React-Vue-项目中-key-的作用’"><a href="#React-Vue-项目中-key-的作用’" class="headerlink" title="React/Vue 项目中 key 的作用’"></a>React/Vue 项目中 key 的作用’</h3><ul>
+<li><p>key的作用是为了在diff算法执行时更快的找到对应的节点，<code>提高diff速度，更高效的更新虚拟DOM</code>;</p>
+<p>  vue和react都是采用diff算法来对比新旧虚拟节点，从而更新节点。在vue的diff函数中，会根据新节点的key去对比旧节点数组中的key，从而找到相应旧节点。如果没找到就认为是一个新增节点。而如果没有key，那么就会采用遍历查找的方式去找到对应的旧节点。一种一个map映射，另一种是遍历查找。相比而言。map映射的速度更快。</p>
+</li>
+<li><p>为了在数据变化时强制更新组件，以避免<code>“就地复用”</code>带来的副作用。</p>
+<p>  当 Vue.js 用 <code>v-for</code> 更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序，而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。重复的key会造成渲染错误。</p>
+</li>
+</ul>
+<h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a><strong>自定义指令</strong></h3><blockquote>
+<p>在配置项 directives 中配置</p>
+</blockquote>
+<p>​            1.函数式：<br>​                    参数：1. element : 真实 DOM元素   </p>
+<p>​                                2. binding：绑定对象</p>
+<p>​                    何时调用：1. 指令与元素成功绑定时调用   </p>
+<p>​                                         2. 指令所在的模板被重新解析时调用</p>
+<ol start="2">
+<li><p>对象式</p>
+<p>​    三个属性：</p>
+<ul>
+<li>bind(): 指令与元素成功绑定时调用</li>
+<li>inserted(): 指令所在元素被插入页面时被调用,模板被重新解析时不会调用</li>
+<li>update(): 指令所在的模板被重新解析时调用</li>
+</ul>
+</li>
+</ol>
+<p>​            3. 全局指令 ：Vue.directive(指令名, 配置项：(函数/对象))</p>
+<blockquote>
+<p>指令名 ：多个单词采用 - 连接</p>
+<p>directives 中的 this 指向 window</p>
+</blockquote>
+<h3 id="Vue-set-方法和-set"><a href="#Vue-set-方法和-set" class="headerlink" title="Vue.set()方法和$set()"></a>Vue.set()方法和$set()</h3><blockquote>
+<p>向响应式对象中添加一个property，确保这个新property同样是响应式的，且触发视图更新。它必须用于向响应式对象中添加新的property，因为Vue无法探测普通的新增property（比如 this.myObject.newProperty = ‘hi’）</p>
+</blockquote>
+<p>参数：</p>
+<ol>
+<li>target:</li>
+<li>key</li>
+<li>val</li>
+</ol>
+<blockquote>
+<p>注：对象不能是Vue实例或者Vue实例的根数据对象</p>
+</blockquote>
+<h3 id="数组扁平化转换"><a href="#数组扁平化转换" class="headerlink" title="数组扁平化转换"></a>数组扁平化转换</h3><p>在说到模版编译的时候，有可能会提到数组的转换，一般就用递归处理<br>将 [1,2,3,[4,5]] 转换成 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    children:[</span><br><span class="line">        &#123;</span><br><span class="line">            value:1</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            value:2</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            value:3</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            children:[</span><br><span class="line">                &#123;</span><br><span class="line">                    value:4</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    value:5</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 测试数组</span></span><br><span class="line"><span class="keyword">var</span> arr =[<span class="number">1</span>,<span class="number">2</span>，<span class="number">3</span>，[<span class="number">4</span>,<span class="number">5</span>]];</span><br><span class="line"><span class="comment">// 转换函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">convert</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//准备一个接收结果数组</span></span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="comment">// 遍历传入的 arr 的每一项</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">        <span class="comment">//如果遍历到的数字是number，直接放进入</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> arr[i] == <span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">            result.push(&#123;</span><br><span class="line">                <span class="attr">value</span>:arr[i]</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(arr[i]))&#123;</span><br><span class="line">            <span class="comment">//如果遍历到这个项目是数组，那么就递归</span></span><br><span class="line">            result.push(&#123;</span><br><span class="line">                <span class="attr">children</span>: convert(arr[i])</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = convert(arr);</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue组件的通信方式"><a href="#vue组件的通信方式" class="headerlink" title="vue组件的通信方式"></a>vue组件的通信方式</h3><ul>
+<li><p><code>props</code>/<code>$emit</code> 父子组件通信</p>
+<p>  父-&gt;子<code>props</code>，子-&gt;父 <code>$on、$emit</code> 获取父子组件实例 <code>parent、children</code> <code>Ref </code>获取实例的方式调用组件的属性或者方法 父-&gt;子孙 <code>Provide、inject</code> 官方不推荐使用，但是写组件库时很常用</p>
+</li>
+<li><p><code>$emit</code>/<code>$on</code> 自定义事件 兄弟组件通信</p>
+<p>  <code>Event Bus</code> 实现跨组件通信 <code>Vue.prototype.$bus = new Vue()</code> 自定义事件</p>
+</li>
+<li><p>vuex 跨级组件通信</p>
+<p>  Vuex、<code>$attrs、$listeners</code> <code>Provide、inject</code></p>
+</li>
+</ul>
+<h3 id="emit-后面的两个参数是什么"><a href="#emit-后面的两个参数是什么" class="headerlink" title="$emit 后面的两个参数是什么"></a>$emit 后面的两个参数是什么</h3><p>1、父组件可以使用 props 把数据传给子组件。<br>2、子组件可以使用 $emit,让父组件监听到自定义事件 。</p>
+<p><code>vm.$emit( event, arg );</code>//触发当前实例上的事件，要传递的参数<br><code>vm.$on( event, fn );</code>//监听event事件后运行 fn； </p>
+<p>子组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;train-city&quot;&gt;</span><br><span class="line">    &lt;h3&gt;父组件传给子组件的toCity:&#123;&#123;sendData&#125;&#125;&lt;/h3&gt; </span><br><span class="line">    &lt;br/&gt;&lt;button @click=&#x27;select(`大连`)&#x27;&gt;点击此处将‘大连’发射给父组件&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name:&#x27;trainCity&#x27;,</span><br><span class="line">    props:[&#x27;sendData&#x27;], // 用来接收父组件传给子组件的数据</span><br><span class="line">    methods:&#123;</span><br><span class="line">      select(val) &#123;</span><br><span class="line">        let data = &#123;</span><br><span class="line">          cityName: val</span><br><span class="line">        &#125;;</span><br><span class="line">        this.$emit(&#x27;showCityName&#x27;,data);//select事件触发后，自动触发showCityName事件</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>父组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;父组件的toCity&#123;&#123;toCity&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;train-city @showCityName=&quot;updateCity&quot; :sendData=&quot;toCity&quot;&gt;&lt;/train-city&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    name:&#x27;index&#x27;,</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    data () &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        toCity:&quot;北京&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">      updateCity(data)&#123;//触发子组件城市选择-选择城市的事件</span><br><span class="line">        this.toCity = data.cityName;//改变了父组件的值</span><br><span class="line">        console.log(&#x27;toCity:&#x27;+this.toCity)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="nextTick的用处？"><a href="#nextTick的用处？" class="headerlink" title="nextTick的用处？"></a>nextTick的用处？</h3><p><strong>在下次 DOM 更新循环结束之后执行延迟回调</strong>，在修改数据之后立即使用 nextTick 来获取更新后的 DOM。</p>
+<p> nextTick优先是微任务，优先是Promise.then 方法，这样可以避免多一次队列，进而少一次UI渲染，节省性能</p>
+<h3 id="使用过插槽么？用的是具名插槽还是匿名插槽或作用域插槽"><a href="#使用过插槽么？用的是具名插槽还是匿名插槽或作用域插槽" class="headerlink" title="使用过插槽么？用的是具名插槽还是匿名插槽或作用域插槽"></a>使用过插槽么？用的是具名插槽还是匿名插槽或作用域插槽</h3><p>vue中的插槽是一个非常好用的东西slot说白了就是一个占位的 在vue当中插槽包含三种一种是默认插槽（匿名）一种是具名插槽还有一种就是作用域插槽 匿名插槽就是没有名字的只要默认的都填到这里具名插槽指的是具有名字的</p>
+<h3 id="keep-alive的实现"><a href="#keep-alive的实现" class="headerlink" title="keep-alive的实现"></a>keep-alive的实现</h3><p>keep-alive是Vue.js的一个内置组件。它能够不活动的组件实例保存在内存中，而不是直接将其销毁，它是一个抽象组件，不会被渲染到真实DOM中，也不会出现在父组件链中。</p>
+<p>作用：实现组件缓存，保持这些组件的状态，以避免反复渲染导致的性能问题。 需要缓存组件 频繁切换，不需要重复渲染</p>
+<p>场景：tabs标签页 后台导航，vue性能优化</p>
+<p>原理：<code>Vue.js</code>内部将<code>DOM</code>节点抽象成了一个个的<code>VNode</code>节点，<code>keep-alive</code>组件的缓存也是基于<code>VNode</code>节点的而不是直接存储<code>DOM</code>结构。它将满足条件<code>（pruneCache与pruneCache）</code>的组件在<code>cache</code>对象中缓存起来，在需要重新渲染的时候再将<code>vnode</code>节点从<code>cache</code>对象中取出并渲染。</p>
+<h3 id="keep-alive-的属性"><a href="#keep-alive-的属性" class="headerlink" title="keep-alive 的属性"></a>keep-alive 的属性</h3><p>它提供了include与exclude两个属性，允许组件有条件地进行缓存。</p>
+<p>include定义缓存白名单，keep-alive会缓存命中的组件；exclude定义缓存黑名单，被命中的组件将不会被缓存；max定义缓存组件上限，超出上限使用LRU的策略置换缓存数据。</p>
+<p>在动态组件中的应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive :include=<span class="string">&quot;whiteList&quot;</span> :exclude=<span class="string">&quot;blackList&quot;</span> :max=<span class="string">&quot;amount&quot;</span>&gt;</span><br><span class="line">     <span class="xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;currentComponent&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+<p>在vue-router中的应用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive :include=<span class="string">&quot;whiteList&quot;</span> :exclude=<span class="string">&quot;blackList&quot;</span> :max=<span class="string">&quot;amount&quot;</span>&gt;</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
+
+<p>vue 中完整示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line">    &lt;coma v-if=&quot;test&quot;&gt;&lt;/coma&gt;</span><br><span class="line">    &lt;comb v-else=&quot;test&quot;&gt;&lt;/comb&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line">&lt;button @click=&quot;test=handleClick&quot;&gt;请点击&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            test: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        handleClick () &#123;</span><br><span class="line">            this.test = !this.test;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考:<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/api/#keep-alive">keep-alive 官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9523bb439950">keep-alive实现原理</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38189842/article/details/103999989">Vue keep-alive的实现原理</a></p>
+<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p>mixin 项目变得复杂的时候，多个组件间有重复的逻辑就会用到mixin<br>多个组件有相同的逻辑，抽离出来<br>mixin并不是完美的解决方案，会有一些问题<br>vue3提出的Composition API旨在解决这些问题【追求完美是要消耗一定的成本的，如开发成本】<br>场景：PC端新闻列表和详情页一样的右侧栏目，可以使用mixin进行混合<br>劣势：1.变量来源不明确，不利于阅读 2.多mixin可能会造成命名冲突 3.mixin和组件可能出现多对多的关系，使得项目复杂度变高</p>
+<h3 id="vue-如何实现模拟-v-model-指令"><a href="#vue-如何实现模拟-v-model-指令" class="headerlink" title="vue 如何实现模拟 v-model 指令"></a>vue 如何实现模拟 v-model 指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; :value=&#x27;name&#x27; @input=&quot;name = $event.target.value&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Vuex的理解及使用场景"><a href="#Vuex的理解及使用场景" class="headerlink" title="Vuex的理解及使用场景"></a>Vuex的理解及使用场景</h3><p>Vuex 是一个专为 Vue 应用程序开发的状态管理模式。每一个 Vuex 应用的核心就是 store（仓库）。</p>
+<ol>
+<li> Vuex 的状态存储是响应式的；当 Vue 组件从 store 中读取状态的时候，</li>
+</ol>
+<p>若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新 2. 改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation， 这样使得我们可以方便地跟踪每一个状态的变化 Vuex主要包括以下几个核心模块：</p>
+<ol>
+<li> State：定义了应用的状态数据</li>
+<li> Getter：在 store 中定义“getter”（可以认为是 store 的计算属性），</li>
+</ol>
+<p>就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来， 且只有当它的依赖值发生了改变才会被重新计算 3. Mutation：是唯一更改 store 中状态的方法，且必须是同步函数 4. Action：用于提交 mutation，而不是直接变更状态，可以包含任意异步操作 5. Module：允许将单一的 Store 拆分为多个 store 且同时保存在单一的状态树中</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7249773a1634f779c48f3f0ffabf968~tplv-k3u1fbpfcp-zoom-1.image"></p>
+<h3 id="虚拟Dom"><a href="#虚拟Dom" class="headerlink" title="虚拟Dom"></a>虚拟Dom</h3><ul>
+<li>虚拟Dom就是用Javascript对象来描述真实Dom，是对真实Dom的抽象</li>
+<li>由于直接操作Dom代价太大且性能低，可以将Dom操作转化成对象操作。最终通过diff算法比对差异进行更新Dom</li>
+<li>虚拟Dom不依赖真实平台环境，可以实现跨平台</li>
+</ul>
+<h3 id="diff算法："><a href="#diff算法：" class="headerlink" title="diff算法："></a>diff算法：</h3><ol>
+<li>调用 pitch方法，传入新旧虚拟DOM,开始同层对比</li>
+<li>调用 isSameNode 方法，对比新旧节点是否是同类型节点</li>
+<li>如果不同，新节点直接代替旧节点</li>
+<li>如果相同，调用patchNode进行对比节点<ul>
+<li>如果旧节点和新节点都是文本节点，则新文本代替旧节点</li>
+<li>如果旧节点没有子节点，新节点有，则把子节点新增上去</li>
+<li>如果旧节点有子节点，新节点没有，则删除旧节点的子节点</li>
+<li>如果都有子节点，则调用updateChildren 方法进行新旧子节点的对比</li>
+<li>子节点对比为首尾对比法</li>
+</ul>
+</li>
+</ol>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2022年03月16日 17:03</p>
+        <p>原始链接： <a class="post-url" href="/2022/03/05/vue/" title="Vue 面试题">https://wskytop.gitee.io/2022/03/05/vue/</a></p>
+        <footer>
+            <a href="https://wskytop.gitee.io">
+                <img src="/images/logo.png" alt="Hugh">
+                Hugh
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wskytop.gitee.io/2022/03/05/vue/&title=《Vue 面试题》 — Hugh's Blog&pic=https://wskytop.gitee.ioimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wskytop.gitee.io/2022/03/05/vue/&title=《Vue 面试题》 — Hugh's Blog&source=专注 WEB 开发的网站" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wskytop.gitee.io/2022/03/05/vue/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Vue 面试题》 — Hugh's Blog&url=https://wskytop.gitee.io/2022/03/05/vue/&via=https://wskytop.gitee.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wskytop.gitee.io/2022/03/05/vue/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wskytop.gitee.io/2022/03/05/vue/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/Vue/" class="color4">Vue</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%80%E8%BF%B0MVVM"><span class="post-toc-text">简述MVVM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#SPA%E5%8D%95%E9%A1%B5%E9%9D%A2%EF%BC%9A"><span class="post-toc-text">SPA单页面：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="post-toc-text">Vue响应式是怎么实现的？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B0%88%E8%B0%88%E5%AF%B9vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="post-toc-text">谈谈对vue生命周期的理解？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="post-toc-text">组件生命周期</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#computed%E4%B8%8Ewatch"><span class="post-toc-text">computed与watch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84data%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="post-toc-text">组件中的data为什么是一个函数？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88v-for%E5%92%8Cv-if%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%94%A8%E5%9C%A8%E4%B8%80%E8%B5%B7"><span class="post-toc-text">为什么v-for和v-if不建议用在一起</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#React-Vue-%E9%A1%B9%E7%9B%AE%E4%B8%AD-key-%E7%9A%84%E4%BD%9C%E7%94%A8%E2%80%99"><span class="post-toc-text">React&#x2F;Vue 项目中 key 的作用’</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="post-toc-text">自定义指令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vue-set-%E6%96%B9%E6%B3%95%E5%92%8C-set"><span class="post-toc-text">Vue.set()方法和$set()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%81%E5%B9%B3%E5%8C%96%E8%BD%AC%E6%8D%A2"><span class="post-toc-text">数组扁平化转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue%E7%BB%84%E4%BB%B6%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="post-toc-text">vue组件的通信方式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emit-%E5%90%8E%E9%9D%A2%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%8F%82%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">$emit 后面的两个参数是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nextTick%E7%9A%84%E7%94%A8%E5%A4%84%EF%BC%9F"><span class="post-toc-text">nextTick的用处？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%87%E6%8F%92%E6%A7%BD%E4%B9%88%EF%BC%9F%E7%94%A8%E7%9A%84%E6%98%AF%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD%E8%BF%98%E6%98%AF%E5%8C%BF%E5%90%8D%E6%8F%92%E6%A7%BD%E6%88%96%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="post-toc-text">使用过插槽么？用的是具名插槽还是匿名插槽或作用域插槽</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#keep-alive%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">keep-alive的实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#keep-alive-%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="post-toc-text">keep-alive 的属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#mixin"><span class="post-toc-text">mixin</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vue-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%8B%9F-v-model-%E6%8C%87%E4%BB%A4"><span class="post-toc-text">vue 如何实现模拟 v-model 指令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Vuex%E7%9A%84%E7%90%86%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">Vuex的理解及使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9FDom"><span class="post-toc-text">虚拟Dom</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#diff%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="post-toc-text">diff算法：</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2022/03/06/webpack/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          webpack 简单面试题
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2022/03/04/js/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">JavaScript 知识点</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        <div id="SOHUCS" sid="vue" ></div>
+<script type="text/javascript">
+    (function(){
+        var appid = 'cyvMglhx4';
+        var conf = 'dc4a7139a3f67732c71e03c4b993aeeb';
+        var width = window.innerWidth || document.documentElement.clientWidth;
+        if (width < 960) {
+            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2022 Hugh<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://wskytop.gitee.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/note/">note</a><a class="category-link" href="/categories/notes/">notes</a><a class="category-link" href="/categories/%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/">手撕代码</a><a class="category-link" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/HTML-CSS/" style="font-size: 10px;">HTML,CSS</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/HTML-CSS/" style="font-size: 10px;">HTML,CSS</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/Vue/" style="font-size: 15px;">Vue</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 10px;">浏览器</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  
+<script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  
+<script src="/js/animate.js"></script>
+
+
+
+  
+<script src="/js/pop-img.js"></script>
+
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>

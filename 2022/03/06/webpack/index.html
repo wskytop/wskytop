@@ -3,23 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>函数防抖和节流 | Hugh&#39;s Blog</title>
+  <title>webpack 简单面试题 | Hugh&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="Hugh,Hugh's Blog" />
   
-  <meta name="description" content="函数防抖（debounce） 解释：当持续触发某事件时，一定时间间隔内没有再触发事件时，事件处理函数才会执行一次，如果设定的时间间隔到来之前，又一次触发了事件，就重新开始延时。 案例：持续触发scroll事件时，并不立即执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发一次handle函数 123456789101112function debounce(fn, wai">
+  <meta name="description" content="webpack 是什么webpack 是自动化打包解决方案，也可以理解为是一个模块打包机。它帮助我们分析项目结构，找到 JavaScript 模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript 等），并将其打包为合适的格式以供浏览器使用  webpack 常见有哪些配置 Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入 Output">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数防抖和节流">
-<meta property="og:url" content="https://wskytop.gitee.io/2021/11/25/md1/index.html">
+<meta property="og:title" content="webpack 简单面试题">
+<meta property="og:url" content="https://wskytop.gitee.io/2022/03/06/webpack/index.html">
 <meta property="og:site_name" content="Hugh&#39;s Blog">
-<meta property="og:description" content="函数防抖（debounce） 解释：当持续触发某事件时，一定时间间隔内没有再触发事件时，事件处理函数才会执行一次，如果设定的时间间隔到来之前，又一次触发了事件，就重新开始延时。 案例：持续触发scroll事件时，并不立即执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发一次handle函数 123456789101112function debounce(fn, wai">
+<meta property="og:description" content="webpack 是什么webpack 是自动化打包解决方案，也可以理解为是一个模块打包机。它帮助我们分析项目结构，找到 JavaScript 模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript 等），并将其打包为合适的格式以供浏览器使用  webpack 常见有哪些配置 Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入 Output">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-25T11:39:00.000Z">
-<meta property="article:modified_time" content="2022-02-22T06:31:15.896Z">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/5/8/171f313316994b08~tplv-t2oaga2asx-watermark.awebp">
+<meta property="article:published_time" content="2022-03-06T09:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-16T09:08:44.653Z">
 <meta property="article:author" content="Hugh">
-<meta property="article:tag" content="js">
+<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/5/8/171f313316994b08~tplv-t2oaga2asx-watermark.awebp">
   
   
     <link rel="icon" href="images/favicon.ico">
@@ -108,14 +110,14 @@
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-md1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-webpack" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      函数防抖和节流
+      webpack 简单面试题
     </h1>
     <div class="post-title-bar">
       <ul>
@@ -123,12 +125,12 @@
               <li>
                   <i class="fa fa-book"></i>
                   
-                      <a href="/categories/notes/">notes</a>
+                      <a href="/categories/面经/">面经</a>
                   
               </li>
           
         <li>
-          <i class="fa fa-calendar"></i>  2021-11-25
+          <i class="fa fa-calendar"></i>  2022-03-06
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -144,22 +146,32 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="函数防抖（debounce）"><a href="#函数防抖（debounce）" class="headerlink" title="函数防抖（debounce）"></a>函数防抖（debounce）</h3><hr>
-<p>解释：当持续触发某事件时，一定时间间隔内没有再触发事件时，事件处理函数才会执行一次，如果设定的时间间隔到来之前，又一次触发了事件，就重新开始延时。<br> 案例：持续触发scroll事件时，并不立即执行handle函数，当1000毫秒内没有触发scroll事件时，才会延时触发一次handle函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeout)     </span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(fn, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Math</span>.random())</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;scroll&#x27;</span>, debounce(handle, <span class="number">1000</span>))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="函数节流（throttle）"><a href="#函数节流（throttle）" class="headerlink" title="函数节流（throttle）"></a>函数节流（throttle）</h3><hr>
-<p>解释：当持续触发事件时，有规律的每隔一个时间间隔执行一次事件处理函数。<br>案例：持续触发scroll事件时，并不立即执行handle函数，每隔1000毫秒才会执行一次handle函数。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn, delay) &#123; </span><br><span class="line">  var prev = 0        </span><br><span class="line">  return function() &#123;               </span><br><span class="line">    var now = Date.now()</span><br><span class="line">    var args = arguments</span><br><span class="line">    if (now - prev &gt; delay) &#123;                   </span><br><span class="line">      fn.apply(this,args)                </span><br><span class="line">      prev = now          </span><br><span class="line">    &#125;         </span><br><span class="line">  &#125;       </span><br><span class="line">&#125;       </span><br><span class="line">function handle() &#123;           </span><br><span class="line">  console.log(Math.random())      </span><br><span class="line">&#125;</span><br><span class="line">window.addEventListener(&#x27;scroll&#x27;, throttle(handle, 1000))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>防抖和节流都可以用于 mousemove、scroll、resize、input等事件，他们的区别在于防抖只会在连续的事件周期结束时执行一次，而节流会在事件周期内按间隔时间有规律的执行多次。</p>
-</blockquote>
+            <h3 id="webpack-是什么"><a href="#webpack-是什么" class="headerlink" title="webpack 是什么"></a>webpack 是什么</h3><p>webpack 是自动化打包解决方案，也可以理解为是一个模块打包机。它帮助我们分析项目结构，找到 JavaScript 模块以及其它的一些浏览器不能直接运行的拓展语言（Scss，TypeScript 等），并将其打包为合适的格式以供浏览器使用</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/5/8/171f313316994b08~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<h3 id="webpack-常见有哪些配置"><a href="#webpack-常见有哪些配置" class="headerlink" title="webpack 常见有哪些配置"></a>webpack 常见有哪些配置</h3><ul>
+<li>Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入</li>
+<li>Output：输出结果，在 Webpack 经过一系列处理并得出最终想要的代码后输出结果。</li>
+<li>mode：提供 mode 配置选项，告知 webpack 使用相应模式的内置优化</li>
+<li>Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。</li>
+<li>Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割</li>
+<li>Loader：模块转换器，用于把模块原内容按照需求转换成新内容。</li>
+<li>Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情</li>
+</ul>
+<h3 id="webpack-工作流程"><a href="#webpack-工作流程" class="headerlink" title="webpack 工作流程"></a>webpack 工作流程</h3><ol>
+<li>参数解析：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数</li>
+<li>找到入口文件：从 Entry 里配置的 Module 开始递归解析 Entry 依赖的所有 Module</li>
+<li>调用 Loader 编译文件：每找到一个 Module， 就会根据配置的 Loader 去找出对应的转换规则</li>
+<li>遍历 AST，收集依赖：对 Module 进行转换后，再解析出当前 Module 依赖的 Module</li>
+<li>生成 Chunk：这些模块会以 Entry 为单位进行分组，一个 Entry 和其所有依赖的 Module 被分到一个组也就是一个 Chunk</li>
+<li>输出文件：最后 Webpack 会把所有 Chunk 转换成文件输出</li>
+</ol>
+<h3 id="Loader和Plugin-有什么区别"><a href="#Loader和Plugin-有什么区别" class="headerlink" title="Loader和Plugin 有什么区别"></a>Loader和Plugin 有什么区别</h3><p> Loader：直译为”加载器”。Webpack将一切文件视为模块，但是webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到<code>loader</code>。 所以Loader的作用是让webpack拥有了加载和解析非JavaScript文件的能力。   </p>
+<p>Plugin：直译为”插件”。Plugin可以扩展webpack的功能，让webpack具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。</p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2022年02月22日 14:31</p>
-        <p>原始链接： <a class="post-url" href="/2021/11/25/md1/" title="函数防抖和节流">https://wskytop.gitee.io/2021/11/25/md1/</a></p>
+        <p>最后更新： 2022年03月16日 17:08</p>
+        <p>原始链接： <a class="post-url" href="/2022/03/06/webpack/" title="webpack 简单面试题">https://wskytop.gitee.io/2022/03/06/webpack/</a></p>
         <footer>
             <a href="https://wskytop.gitee.io">
                 <img src="/images/logo.png" alt="Hugh">
@@ -216,7 +228,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wskytop.gitee.io/2021/11/25/md1/&title=《函数防抖和节流》 — Hugh's Blog&pic=https://wskytop.gitee.ioimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wskytop.gitee.io/2022/03/06/webpack/&title=《webpack 简单面试题》 — Hugh's Blog&pic=https://wskytop.gitee.ioimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -226,22 +238,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wskytop.gitee.io/2021/11/25/md1/&title=《函数防抖和节流》 — Hugh's Blog&source=专注 WEB 开发的网站" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wskytop.gitee.io/2022/03/06/webpack/&title=《webpack 简单面试题》 — Hugh's Blog&source=专注 WEB 开发的网站" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wskytop.gitee.io/2021/11/25/md1/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wskytop.gitee.io/2022/03/06/webpack/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《函数防抖和节流》 — Hugh's Blog&url=https://wskytop.gitee.io/2021/11/25/md1/&via=https://wskytop.gitee.io" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack 简单面试题》 — Hugh's Blog&url=https://wskytop.gitee.io/2022/03/06/webpack/&via=https://wskytop.gitee.io" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wskytop.gitee.io/2021/11/25/md1/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wskytop.gitee.io/2022/03/06/webpack/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -251,7 +263,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wskytop.gitee.io/2021/11/25/md1/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://wskytop.gitee.io/2022/03/06/webpack/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -263,7 +275,7 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/js/" class="color3">js</a>
+    <a href="/tags/webpack/" class="color3">webpack</a>
       
   </li>
 
@@ -276,26 +288,16 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%EF%BC%88debounce%EF%BC%89"><span class="post-toc-text">函数防抖（debounce）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%EF%BC%88throttle%EF%BC%89"><span class="post-toc-text">函数节流（throttle）</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-text">webpack 是什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-%E5%B8%B8%E8%A7%81%E6%9C%89%E5%93%AA%E4%BA%9B%E9%85%8D%E7%BD%AE"><span class="post-toc-text">webpack 常见有哪些配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="post-toc-text">webpack 工作流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Loader%E5%92%8CPlugin-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="post-toc-text">Loader和Plugin 有什么区别</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2021/11/25/git/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Git 常用命令
-        
-      </span>
-    </a>
   
-  
-    <a href="/2021/11/25/listNode/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">JavaScript 手撕单向链表</span>
+    <a href="/2022/03/05/vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Vue 面试题</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -304,7 +306,7 @@
 
 
     
-        <div id="SOHUCS" sid="md1" ></div>
+        <div id="SOHUCS" sid="webpack" ></div>
 <script type="text/javascript">
     (function(){
         var appid = 'cyvMglhx4';
